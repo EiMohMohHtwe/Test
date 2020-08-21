@@ -4,12 +4,10 @@
     <div class="row">
         <div class="col-md-12">
             <h3>File List</h3>
-            <form action="/index" method="post">
                 @csrf
-                    @foreach($filedata as $row)
-                            <a href="/show/1">{{$row['name']}}</a><br/>
-                    @endforeach
-            </form>
+                @foreach($filedata as $resource)
+                    <a href="{{ route('resources.show', $resource) }}">{{ $resource->name }}</a><br/>
+                @endforeach
         </div>
     </div>
 </body>

@@ -14,7 +14,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $filedata = Resource::all()->toArray();
+        $filedata = Resource::all();
 
         return view('files.index', compact('filedata'));
     }
@@ -56,8 +56,10 @@ class ResourceController extends Controller
 
     public function show($id)
     {
-        $resources = Resource::find($id);
+        $resource = Resource::find($id);
 
-        return view('files.show', compact('resources'));
+        $filepath = storage_path('app/'.$resource->url);
+
+        return response()->file($filepath);
     }
 }

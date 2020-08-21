@@ -32,7 +32,6 @@ Route::get('/about',function(){
     latest()->get()]);
 });
 
-
 Route::get("/profile",'RegisterController@index');
 Auth::routes();
 
@@ -63,9 +62,9 @@ Route::patch('/editpost/{post}','PostController@update')->name('dashboard.update
 
 Route::post('posts/{post}/comment', 'CommentController@store')->name('comments.store');
 
-Route::get("/create",'ResourceController@create');
-Route::post("/create",'ResourceController@store');
-Route::get("/index",'ResourceController@index')->name('filelist.index');
-Route::get("/show/{resource}",'ResourceController@show');
+Route::get('/create','ResourceController@create');
+Route::post('/create','ResourceController@store');
+Route::get('/index','ResourceController@index')->name('filelist.index');
+Route::get('resources/{resource}/show','ResourceController@show')->name('resources.show');
 
 
